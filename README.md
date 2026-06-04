@@ -1,4 +1,4 @@
-# [Insert Project Name Here]
+# Open_DevPush
 
 This is an open-source prototype designed to bridge a client-side Graphical User Interface (GUI) with a main project directory. It allows users to seamlessly make and apply real-time changes to the core directory structure through an intuitive interface.
 
