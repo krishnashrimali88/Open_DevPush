@@ -1,6 +1,8 @@
-from flask import Flask,send_from_directory
+from flask import Flask,send_from_directory,jsonify
 import os
 from pathlib import Path
+
+
 app = Flask(__name__)
 
 ath = os.path.dirname(__file__)
@@ -8,14 +10,13 @@ ath = os.path.dirname(__file__)
 nath = os.path.join(ath,'served_folder')
 
 new = Path(nath)
-print(nath)
+
 
 
 @app.route('/')
 def list_files():
-    files = os.listdir(new)
-    return '<br>'.join(f'<a href="/files/{f}">{f}</a>' for f in files)
-
+    return jsonify(os.listdir(new))
+   
 @app.route('/files/<path:filename>')
 def test(filename):
     return send_from_directory(new,filename)
