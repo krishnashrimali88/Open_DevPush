@@ -1,4 +1,3 @@
-import asyncio
 import aiohttp
 import os
 from pathlib import Path
@@ -7,7 +6,7 @@ base = Path(os.path.dirname(__file__))
 
 async def get():
     async with aiohttp.ClientSession() as session:
-
+    
         async with session.get("http://127.0.0.1:8080/") as answer:
             tasks = await answer.json()
 
@@ -25,4 +24,16 @@ async def get():
 
                 print(f"Downloaded: {task}")
 
-asyncio.run(get())
+async def update(textbox):
+    async with aiohttp.ClientSession() as session:
+        async with session.get("http://127.0.0.1:8080/") as answer:
+            tasks = await answer.json()
+    
+    for t in tasks:
+        textbox.insert('end',f'\n{t}')
+
+
+
+
+
+
